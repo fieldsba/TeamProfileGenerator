@@ -119,3 +119,8 @@ const addEmployee = () => {
         else {return team;}
     })
 };      //end of addEmployee
+
+addEmployee()
+    .then(team => {
+        return generateHTML(team);
+    })
