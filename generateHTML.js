@@ -46,3 +46,35 @@ var createInternCard = function (Intern) {
     </div> `
 };
 
+generateHTML = (data) => {
+    var pageArray = [];
+
+    for (i = 0; i < data.length; i++) {
+        var employee = data[i];
+        var role = employee.getRole();
+
+        switch(role) {
+            case 'Manager':
+                var managerCard = generateManager(employee);
+                pageArray.push(managerCard);
+                break;
+
+            case 'Engineer': 
+                var engineerCard = generateEngineer(employee);
+                pageArray.push(engineerCard);
+                break;
+
+            case 'Intern':
+                var internCard = generateIntern(employee);
+                pageArray.push(internCard);
+                break;
+        }
+    } 
+
+    const employeeCards = pageArray.join('');
+
+    const createTeam = generateTeamPage(employeeCards);
+    return createTeam;
+}
+
+

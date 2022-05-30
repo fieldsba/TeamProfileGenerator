@@ -124,3 +124,18 @@ addEmployee()
     .then(team => {
         return generateHTML(team);
     })
+    .then(page => {
+        return writeToFile(page);
+    })
+    .catch(err => {
+        console.log("Error occurred while writing file");
+    });
+
+const writeToFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {console.log('Error');}
+        else {console.log("Team profile successfully generated");}
+    })
+};
+
+// TO DO:   Put in page HTML, find out how to put card HTML into page HTML
